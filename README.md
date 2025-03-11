@@ -1,4 +1,4 @@
-#authentication 
+# authentication 
 Stack
 * Entra id
 * React
