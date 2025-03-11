@@ -1,23 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+
 import './App.css';
 
 function App() {
+  const [username, setUsername]= useState<string>('');
+  const inputChange = (event: React.ChangeEvent<HTMLInputElement>)=>{
+    setUsername(event.target.value);
+  };
+
+  const handleLogin = ()=>{
+    if(username.trim())
+    {
+      alert(`Welcome, ${username}!`);
+    }
+    else{
+      alert('Enter a username')
+    }
+    
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>Login</p>
+        <div>
+          <input
+            type="text"
+            placeholder="Enter your username"
+            value={username}
+            onChange={inputChange}
+          />
+          <button onClick={handleLogin}>Login</button>
+        </div>
       </header>
     </div>
   );
