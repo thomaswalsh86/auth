@@ -1,39 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import './App.css';
+const Login = () => {
+    const [loading, setLoading] = useState(false);
 
-function App() {
-  const [username, setUsername]= useState<string>('');
-  const inputChange = (event: React.ChangeEvent<HTMLInputElement>)=>{
-    setUsername(event.target.value);
-  };
+    const handleLogin = async () => {
+        setLoading(true);
+        try {
+            // Make request to the /login route to get Microsoft login URL
+            const response = await fetch("http://localhost:3000/login");
+            const data = await response.json();
 
-  const handleLogin = ()=>{
-    if(username.trim())
-    {
-      alert(`Welcome, ${username}!`);
-    }
-    else{
-      alert('Enter a username')
-    }
-    
-  }
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>Login</p>
-        <div>
-          <input
-            type="text"
-            placeholder="Enter your username"
-            value={username}
-            onChange={inputChange}
-          />
-          <button onClick={handleLogin}>Login</button>
+            // Redirect the user to Microsoft's login page
+            window.location.href = data.url;
+        } catch (error) {
+            console.error("Login failed:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="login-container">
+            <h2>Login with Microsoft</h2>
+            <button onClick={handleLogin} disabled={loading}>
+                {loading ? "Redirecting..." : "Sign in with Microsoft"}
+            </button>
         </div>
-      </header>
-    </div>
-  );
-}
+    );
+};
 
-export default App;
+export default Login;

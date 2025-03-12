@@ -4,19 +4,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #282c34;
+  background-color: #464646;
   color: white;
 }
 
 .App-header {
-  background-color: #20232a;
+  background-color: #232a3a;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-input {
+.userN {
   padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #61dafb;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.pass {
+  padding: 10px;
+  margin-top: 20px;
   margin-right: 10px;
   border: 1px solid #61dafb;
   border-radius: 5px;
@@ -25,6 +33,7 @@ input {
 
 button {
   padding: 10px 20px;
+  margin:10px;
   background-color: #61dafb;
   border: none;
   border-radius: 5px;
